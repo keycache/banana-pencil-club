@@ -1,0 +1,36 @@
+# Exclude Python cache & build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+.env/
+env/
+venv/
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+
+# Git
+.git
+.gitignore
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Misc
+.DS_Store
+*.log
+.data/
+.env
