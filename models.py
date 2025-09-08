@@ -296,7 +296,7 @@ def get_stories(user_id: Optional[str] = None) -> List[Story]:
             if story_files:
                 try:
                     story = Story.load(os.path.join(story_path, story_files[0]))
-                    if story.user_id == user_id:
+                    if story.user_id == user_id or story.user_id is None:
                         stories.append(story)
                 except Exception as e:
                     print(f"Error loading story from {story_files[0]}: {e}")

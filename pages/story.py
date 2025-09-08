@@ -213,6 +213,9 @@ def render_view_story(story_name: str):
         for asset in missing_assets:
             st.markdown(f"- {asset}")
     else:
+        st.info(
+            "To go to the next page you can either click 'Next' or click on the right side of the page. To go to the previous page you can either click 'Previous' or click on the left side of the page."
+        )
         render_flipbook(story=story)
         # st.success("All assets have been generated for this story!")
 
@@ -228,7 +231,7 @@ def make_story_app(story_name: str):
                 " ",
                 ["Generate Assets", "View Story"],
                 key="story_tab",
-                default="Generate Assets",
+                # default="Generate Assets",
             )
         with st.container():
             if selection == "Generate Assets":

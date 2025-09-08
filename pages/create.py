@@ -110,6 +110,9 @@ def render_create():
     st.info(
         "Fill in the details below to create a new story. Or, alternatively, use the **`Auto-Fill Example`** button to fill in and/or modify some example details and then click **`Generate Story`** at the bottom of the form."
     )
+    st.info(
+        "A default story 'Luna and the Whispering Locket' is fully generated and available for viewing in the under 'View Your Stories'(in the sidebar)."
+    )
     with st.container(horizontal=True, horizontal_alignment="right"):
         st.button("Auto-Fill Example", on_click=auto_fill_example)
 
