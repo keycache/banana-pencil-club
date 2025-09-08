@@ -107,6 +107,9 @@ def render_create():
         switch_to_story_page(story=get_state(Session.ALL_STORIES)[-1])
         return
 
+    st.info(
+        "Fill in the details below to create a new story. Or, alternatively, use the **`Auto-Fill Example`** button to fill in and/or modify some example details and then click **`Generate Story`** at the bottom of the form."
+    )
     with st.container(horizontal=True, horizontal_alignment="right"):
         st.button("Auto-Fill Example", on_click=auto_fill_example)
 

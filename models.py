@@ -21,10 +21,11 @@ from gemini import generate_image, generate_text
 from prompts import (
     get_charactersheet_image_generation_prompt,
     get_cover_image_generation_prompt,
+    get_illustration_image_generation_prompt,
     get_story_generation_system_prompt,
     get_story_generation_user_prompt,
 )
-from utils import classify_image_aspect, to_kebab_case
+from utils import classify_image_aspect, generate_narration, to_kebab_case
 
 
 class Page(BaseModel):
@@ -173,7 +174,9 @@ class Story(BaseModel):
             return page.image_path
 
         illustration_image = generate_image(
-            prompt=page.illustration_prompt,
+            prompt=get_illustration_image_generation_prompt(
+                image_prompt=page.illustration_prompt, image_text=page.text
+            ),
             model_name=GEMINI_IMAGE_GENERATION_MODEL,
             reference_image=(
                 Image.open(self.character_sheet.image_path)
@@ -298,52 +301,3 @@ def get_stories(user_id: Optional[str] = None) -> List[Story]:
                 except Exception as e:
                     print(f"Error loading story from {story_files[0]}: {e}")
     return stories
-
-
-if __name__ == "__main__":
-    from dotenv import load_dotenv
-
-    load_dotenv()
-    # story: Story = Story.generate_story(
-    #     protagonist_details="Luna, a curious young girl with a magical locket",
-    #     page_count=PageCount.TENish.value,
-    #     style=Style.PIXAR_STYLE.value,
-    #     premise="Luna discovers a magical locket that transports her to a whimsical world where she learns valuable life lessons.",
-    #     audience=Audience.KIDS.value,
-    #     protagonist_image=Image.open(".data/images/luna.jpeg"),
-    # )
-    # story.save()
-    # print(f"Story saved to {story.get_story_file_path()}")
-
-    # system_prompt = get_story_generation_system_prompt(
-    #     story_schema=Story.model_json_schema()
-    # )
-
-    # user_prompt = get_story_generation_user_prompt(
-    #     protagonist_details="Luna, a curious young girl with a magical locket",
-    #     page_count=PageCount.TENish.value,
-    #     style=Style.CARTOON.value,
-    #     premise="Luna discovers a magical locket that transports her to a whimsical world where she learns valuable life lessons.",
-    #     audience=Audience.KIDS.value,
-    # )
-    # story = generate_text(
-    #     system_prompt=system_prompt,
-    #     user_prompt=user_prompt,
-    #     model_name="models/gemini-2.5-flash-lite",
-    #     target_model=Story,
-    # )
-    # story.image_path = ".data/images/luna.jpeg"
-    # story.save()
-    # print(f"Story saved to {story.get_story_file_path()}")
-    story: Story = Story.load(
-        # ".data/stories/ruhi-and-the-whispering-woods/ruhi-and-the-whispering-woods.json"
-        ".data/stories/ira-and-the-locket-of-whispering-woods/ira-and-the-locket-of-whispering-woods.json"
-    )
-    print(story.get_orientation())
-
-    # print(story.image_path)
-    # story.generate_character_sheet()
-    # story.generate_cover_image()
-    # story.generate_illustration(page_index=2)
-    # out = story.generate_illustrations(force=False)
-    # print(out)

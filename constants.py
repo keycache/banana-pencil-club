@@ -5,6 +5,7 @@ STORIES_BASE_DIR = ".data/stories"
 GEMINI_IMAGE_GENERATION_MODEL = "models/gemini-2.5-flash-image-preview"
 GEMINI_TEXT_GENERATION_MODEL_FAST = "models/gemini-2.5-flash"
 GEMINI_TEXT_GENERATION_MODEL_ACCURATE = "models/gemini-2.5-pro"
+INTEGRATE_TEXT_IN_IMAGE = True  # Whether to integrate text in image generation (for better text rendering in images)
 
 
 class PageCount(str, Enum):

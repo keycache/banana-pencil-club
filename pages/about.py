@@ -3,11 +3,12 @@ import streamlit as st
 st.markdown(
     """
 # About "Banana Pencil Club"
-This is a simple app for generating stories using AI for kids.
+Generate stories using AI for kids(and grown-ups).
+The app leverages character sheets to maintain visual consistency of the protagonist across multiple illustrated pages.
 With a few quick entries about your protagonist and story premise, you can generate a complete story with images.
 You can upload an image of yourself or your child to be the hero of the story or savior of the day!
 
-This app is a hackathon project built in 48 hours.
+This app is a hackathon project built in less than 48 hours.
 
 It uses:
 - [Nano Banana](https://blog.google/products/gemini/updated-image-editing-model/) for image generation
