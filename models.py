@@ -25,7 +25,7 @@ from prompts import (
     get_story_generation_system_prompt,
     get_story_generation_user_prompt,
 )
-from utils import classify_image_aspect, generate_narration, to_kebab_case
+from utils import classify_image_aspect, to_kebab_case
 
 
 class Page(BaseModel):
