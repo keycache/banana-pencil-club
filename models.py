@@ -259,7 +259,7 @@ class Story(BaseModel):
         most_common = Counter(
             [
                 classify_image_aspect(Image.open(page.image_path))
-                for page in story.pages
+                for page in self.pages
                 if page.image_path and os.path.exists(page.image_path)
             ]
         ).most_common()
