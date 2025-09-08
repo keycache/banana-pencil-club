@@ -220,6 +220,9 @@ def render_view_story(story_name: str):
 def make_story_app(story_name: str):
     def story_app():
         st.title(f"Welcome to '{story_name}'!")
+        st.info(
+            "Select a tab to proceed. `Generate Assets` will provide you a list of assets to generate. Generate `Character Sheet` first (until the characters are to your liking), followed by the `Cover Image`, and then the page illustrations. The assets can be generated as many times as needed. Once all assets are generated, you can view the story in the `View Story` tab."
+        )
         with st.container(horizontal=True, horizontal_alignment="center"):
             selection = st.pills(
                 " ",
