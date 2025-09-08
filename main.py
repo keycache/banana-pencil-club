@@ -9,7 +9,7 @@ from utils import get_state, set_state, to_kebab_case
 
 
 def generate_session_id():
-    return "16620a51-e0a2-4ab4-8416-6765b1a40011"
+    # return "16620a51-e0a2-4ab4-8416-6765b1a40011"
     return str(uuid.uuid4())
 
 
