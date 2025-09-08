@@ -168,18 +168,12 @@ def render_generate_assets(story_name: str):
                 style=story.style,
                 protagonist_image=story.image_path,
             )
-            selected_asset_path = (
-                get_state(Session.CHARACTER_SHEET_ASSET_VALUE)
-                or story.character_sheet.image_path
-            )
+            selected_asset_path = story.character_sheet.image_path
         elif selected_asset == "Cover Image":
             selected_asset_prompt = get_cover_image_generation_prompt(
                 style=story.style, story_title=story.title
             )
-            selected_asset_path = (
-                get_state(Session.COVER_IMAGE_ASSET_VALUE)
-                or story.cover_image.image_path
-            )
+            selected_asset_path = story.cover_image.image_path
         elif selected_asset.startswith("Page"):
             page_number = int(selected_asset.split(" ")[1])
             page_index = page_number - 1
@@ -188,10 +182,7 @@ def render_generate_assets(story_name: str):
             ) or [page.image_path for page in story.pages]
             if illustration_values is not None:
                 selected_asset_prompt = story.pages[page_index].illustration_prompt
-                selected_asset_path = (
-                    illustration_values[page_index]
-                    or story.pages[page_index].image_path
-                )
+                selected_asset_path = story.pages[page_index].image_path
         # st.text_area("Asset Prompt", value=selected_asset_prompt, height=300)
         if selected_asset_path:
             st.markdown(
