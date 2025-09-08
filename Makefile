@@ -17,9 +17,8 @@ build:
 	docker build -t $(IMAGE) .
 
 run: build
-	docker run --rm -it -p 8080:8080 -e GEMINI_API_KEY=AIzaSyD56aV3Uthk6tjuxUzri6fhhew-fhMqIOg --name $(APP_NAME) $(IMAGE)
+	docker run --rm -it -p $(PORT):8501 --name $(APP_NAME) $(IMAGE)
 
-# 	docker run --rm -it -p $(PORT):8501 --name $(APP_NAME) $(IMAGE)
 
 shell: build
 	docker run --rm -it --entrypoint /bin/bash $(IMAGE)

@@ -54,7 +54,7 @@ FROM --platform=linux/amd64 python:3.13-slim AS runtime
 
 ENV PYTHONUNBUFFERED=1 \
     PATH="/app/.venv/bin:${PATH}" \
-    STREAMLIT_SERVER_PORT=8080 \
+    STREAMLIT_SERVER_PORT=8501 \
     STREAMLIT_SERVER_ADDRESS=0.0.0.0
 
 WORKDIR /app
@@ -78,7 +78,7 @@ RUN mkdir -p .data/stories .data/images && chmod -R 775 .data
 # Optional: make it a volume so data persists (user can override)
 VOLUME ["/app/.data"]
 
-EXPOSE 8080
+EXPOSE 8501
 
 # Default command runs the Streamlit app
-CMD ["streamlit", "run", "main.py", "--server.port=8080", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
